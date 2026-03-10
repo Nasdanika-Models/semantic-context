@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.nasdanika.models.semantic.context</groupId>
+	<groupId>org.nasdanika.models.semantic-context</groupId>
 	<artifactId>parent</artifactId>
-	<version>2025.12.0</version>
+	<version>2026.2.0</version>
 	<packaging>pom</packaging>
-	<name>Semantic Context Model</name>
-	<description>Ecore metamodel for defining a Semantic Context Model (SCM) — a declarative specification for projecting heterogeneous source metamodels into a unified bounded context</description>
+	<name>Semantic Context model, processors, doc generator</name>
+	<url>https://semantic-context.models.nasdanika.org/</url>
 
 	<licenses>
 		<license>
 			<name>Eclipse Public License 2.0</name>
-			<url>https://www.nasdanika.org/builds/master/eclipse-public-license-2.0.html</url>
+			<url>https://nasdanika.org/builds/master/eclipse-public-license-2.0.html</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -20,28 +20,24 @@
 		<url>https://github.com/Nasdanika-Models/semantic-context</url>
 	</scm>
 
-	<url>https://github.com/Nasdanika-Models/semantic-context</url>
-
 	<properties>
+		<core.version>2026.2.0</core.version>
+		<html.version>2026.2.0</html.version>
+		<models.ecore.version>2026.2.0</models.ecore.version>
 		<jacoco.version>0.8.14</jacoco.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-	</properties>
+	</properties>	
 
 	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh</artifactId>
-				<version>3.5.3</version>
-			</extension>
-		</extensions>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.5.4</version>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.14.1</version>
+				<configuration>
+					<release>21</release>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -50,16 +46,8 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.14.1</version>
-				<configuration>
-					<release>17</release>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.4.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -69,11 +57,46 @@
 					</execution>
 				</executions>
 			</plugin>
+		        <plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-surefire-plugin</artifactId>
+		            <version>3.5.4</version>
+		        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.12.0</version>
+			
 				<executions>
+					<execution>
+						<id>aggregate</id>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+						<configuration>
+							<failOnError>false</failOnError>
+							<additionalOptions>-Xdoclint:none</additionalOptions>
+							<additionalOptions><![CDATA[--allow-script-in-comments]]></additionalOptions>
+							<linksource>true</linksource>	
+			        			<useStandardDocletOptions>true</useStandardDocletOptions>
+							<links>
+								<link>https://download.eclipse.org/modeling/emf/emf/javadoc/2.11/</link>
+								<link>https://picocli.info/apidocs/</link>
+							</links>
+							<header>
+								<![CDATA[
+								      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BRJVLK8CC"></script>
+								      <script>
+								        window.dataLayer = window.dataLayer || [];
+								        function gtag(){dataLayer.push(arguments);}
+								        gtag('js', new Date());
+      
+								        gtag('config', 'G-9BRJVLK8CC');
+								      </script>    
+								]]>
+							</header>
+						</configuration>
+					</execution>
 					<execution>
 						<id>attach-javadocs</id>
 						<goals>
@@ -82,32 +105,31 @@
 						<configuration>
 							<failOnError>false</failOnError>
 							<additionalOptions>-Xdoclint:none</additionalOptions>
-							<linksource>true</linksource>
 							<additionalOptions><![CDATA[--allow-script-in-comments]]></additionalOptions>
+							<linksource>true</linksource>	
+			        			<useStandardDocletOptions>true</useStandardDocletOptions>
 							<links>
 								<link>https://download.eclipse.org/modeling/emf/emf/javadoc/2.11/</link>
+								<link>https://picocli.info/apidocs/</link>
 							</links>
+							<header>
+								<![CDATA[
+								      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BRJVLK8CC"></script>
+								      <script>
+								        window.dataLayer = window.dataLayer || [];
+								        function gtag(){dataLayer.push(arguments);}
+								        gtag('js', new Date());
+      
+								        gtag('config', 'G-9BRJVLK8CC');
+								      </script>    
+								]]>
+							</header>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.10.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.10.0</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 	<organization>
 		<name>Nasdanika</name>
@@ -126,11 +148,27 @@
 		</developer>
 	</developers>
 
+	<dependencies>
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-api</artifactId>
+		    <version>6.0.1</version>
+		    <scope>test</scope>
+		</dependency>		
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		    <version>6.0.1</version>
+		    <scope>test</scope>
+		</dependency>		
+	</dependencies>
+
 	<modules>
 		<module>model</module>
+		<module>ecore</module>
 	</modules>
 
-	<profiles>
+	 <profiles>
 		<profile>
 			<id>central</id>
 			<build>
@@ -148,8 +186,8 @@
 								</goals>
 							</execution>
 						</executions>
-					</plugin>
-					<plugin>
+					</plugin>	
+					<plugin>					
 						<groupId>org.sonatype.central</groupId>
 						<artifactId>central-publishing-maven-plugin</artifactId>
 						<version>0.9.0</version>
@@ -164,3 +202,4 @@
 		</profile>
 	</profiles>
 </project>
+

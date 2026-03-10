@@ -1,0 +1,364 @@
+{
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/documentation/index.html": {
+    "path": "ContextModel/Attributes/documentation",
+    "link-uuid": "c3974558-9194-43ce-9a77-d0d0ccc813f4",
+    "title": "documentation",
+    "content": "Type EString Multiplicity 0..1 Optional human-readable documentation for this context model.",
+    "timestamp": 1773170609123
+  },
+  "references/eClassifiers/OperationContext/references/eStructuralFeatures/include/index.html": {
+    "path": "OperationContext/Attributes/include",
+    "link-uuid": "2d2051d1-36ef-46a2-bbc3-83337d6b1ec4",
+    "title": "include",
+    "content": "Type EBoolean Multiplicity 0..1 Whether to include this operation in the projected context. Defaults to true.",
+    "timestamp": 1773170609329
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/featureContexts/index.html": {
+    "path": "ElementContext/References/featureContexts",
+    "link-uuid": "e26eb53f-adc4-4644-964a-d46fabfbad4c",
+    "title": "featureContexts",
+    "content": "Type FeatureContext Multiplicity 0..* Per-feature projection rules controlling visibility, renaming, and mapping of structural features.",
+    "timestamp": 1773170609253
+  },
+  "references/eClassifiers/ContextModel/index.html": {
+    "link-uuid": "40d11d4a-469d-4d07-bf14-7c93028caf87",
+    "title": "ContextModel",
+    "content": "Root element of the Semantic Context Model. Owns all source model references, element contexts, type mappings, cross-model links, and drift rules. Diagram ",
+    "timestamp": 1773170609113
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/to/index.html": {
+    "path": "CrossModelLink/References/to",
+    "link-uuid": "3eb7c984-f489-4e1c-88df-01c28cd2257e",
+    "title": "to",
+    "content": "Type ENamedElement Multiplicity 1 The target-side named element of this cross-model link (e.g., a GitLabCommit EClass).",
+    "timestamp": 1773170609187
+  },
+  "references/eClassifiers/CrossModelLink/index.html": {
+    "link-uuid": "6e774850-ed42-4579-ad3e-83e469822d36",
+    "title": "CrossModelLink",
+    "content": "Defines a semantic relationship between named elements from two different source models (e.g., JiraIssue to GitLabCommit). Diagram ",
+    "timestamp": 1773170609161
+  },
+  "references/eClassifiers/DriftRule/references/eStructuralFeatures/onChangedType/index.html": {
+    "path": "DriftRule/Attributes/onChangedType",
+    "link-uuid": "39c97a0e-ac66-4952-9408-50a28d937d93",
+    "title": "onChangedType",
+    "content": "Type EString Multiplicity 0..1 Action to take when the type of the source element has changed in a newer version of the source model. One of: &lsquo;fail&rsquo;, &lsquo;skip&rsquo;, &lsquo;suggest&rsquo;.",
+    "timestamp": 1773170609216
+  },
+  "references/eClassifiers/FeatureContext/index.html": {
+    "link-uuid": "8ec17cc0-7b19-495c-b91c-4ce86c2d57ec",
+    "title": "FeatureContext",
+    "content": "Controls visibility, renaming, and mapping of a single EStructuralFeature in the projected context. Diagram ",
+    "timestamp": 1773170609290
+  },
+  "references/eClassifiers/DriftRule/references/eStructuralFeatures/onChangedCardinality/index.html": {
+    "path": "DriftRule/Attributes/onChangedCardinality",
+    "link-uuid": "dffb73bc-75a5-4c8b-9cb7-3dc2005811e9",
+    "title": "onChangedCardinality",
+    "content": "Type EString Multiplicity 0..1 Action to take when the cardinality of the source element has changed in a newer version of the source model. One of: &lsquo;fail&rsquo;, &lsquo;skip&rsquo;, &lsquo;suggest&rsquo;.",
+    "timestamp": 1773170609214
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/flatten/index.html": {
+    "path": "ElementContext/Attributes/flatten",
+    "link-uuid": "538c7d7c-2ad9-4f7f-9e15-e3df30d7efe4",
+    "title": "flatten",
+    "content": "Type EBoolean Multiplicity 0..1 Whether to flatten the hierarchy of this element into its parent in the projected context. Defaults to false.",
+    "timestamp": 1773170609256
+  },
+  "index.html": {
+    "link-uuid": "db92943b-952c-43a9-942b-0a792617863c",
+    "title": "Semantic Context Model",
+    "content": "A declarative, diagram-first way to define bounded semantic slices across one or more source models &mdash; enabling clean projections, simplified metamodels, unified views, and safe agent-bounded contexts. What this project is The Semantic Context Model (SCM) is an Ecore-based specification that lets you define how to project one or more complex source models (e.g., UAF, Jira, GitLab, custom domain models) into a simplified, unified, meaningful context. SCM acts as a semantic firewall: Shielding your domain from upstream complexity Enabling clean, stable, human-friendly models Powering agent-safe schemas and bounded contexts Enabling cross-model unification (e.g., Jira issues &lt;-&gt; GitLab commits) Why this matters Modern systems increasingly rely on: LLM agents that need small, stable, predictable schemas Complex enterprise models (UAF, DoDAF, ArchiMate) that are too large and unstable for direct use Heterogeneous data sources (Jira, GitLab, Confluence, CRM, ERP) that need semantic alignment Diagram-first workflows where humans define meaning visually SCM provides the missing layer: a declarative, versionable, inspectable specification that defines what the world looks like for a given context, agent, or integration. What SCM enables Create simple context models from complex frameworks like UAF Build DDD-style bounded contexts directly from diagrams Generate agent-ready schemas from model slices Unify multiple source models (e.g., Jira + GitLab) into a single semantic view Provide a semantic anti-corruption layer between systems Support diagram-first elicitation of knowledge from SMEs and founders Enable local, offline, sovereign modeling with Git as the database Why contributors might care This project sits at the intersection of: - Model-Driven Engineering - Domain-Driven Design - Multi-agent systems - Knowledge graphs - Semantic interoperability - Enterprise architecture - AI safety and governance If you&rsquo;re interested in any of these areas, SCM is a chance to help define a new category: Model-Bound Agentic Systems &mdash; where agents operate on formal, bounded semantic slices rather than unstructured text. Current status The repository contains the initial model and documentation. Roadmap Refine the spec Implement a documentation generator for publishing context spec for humans. Implement a translator or translators which: Generates the context metamodel, which can then be translated to JSON schema for agents. Takes input models and generates an output model which and then be translated to JSON compliant to the JSON schema generated from the metamodel UI for defining the specification. Options: Tree-based designer - can be implemented as a Web application served by a CLI command. Visual ontology Tree mapper similar to the Eclipse Nebula Treemapper CrossModelLink ElementContext SourceModel sourceModel sourceModelFrom sourceModelTo FeatureContext featureContexts featureContext OperationContext operationContexts ContextModel crossModelLinks sourceModels elementContexts DriftRule driftRules TypeMapping sourceModel typeMappings Semantic Context",
+    "timestamp": 1773170609087
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/from/index.html": {
+    "path": "CrossModelLink/References/from",
+    "link-uuid": "2dd39059-ee3d-4385-b72a-8271887bc25f",
+    "title": "from",
+    "content": "Type ENamedElement Multiplicity 1 The source-side named element of this cross-model link (e.g., a JiraIssue EClass).",
+    "timestamp": 1773170609173
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/sourceModelTo/index.html": {
+    "path": "CrossModelLink/References/sourceModelTo",
+    "link-uuid": "64d2bf29-014f-4b84-b843-dca2e7e078a6",
+    "title": "sourceModelTo",
+    "content": "Type SourceModel Multiplicity 1 The source model that owns the &lsquo;to&rsquo; element.",
+    "timestamp": 1773170609184
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/renameTo/index.html": {
+    "path": "ElementContext/Attributes/renameTo",
+    "link-uuid": "86ed3248-9fb2-475b-b194-faf155f5ce9d",
+    "title": "renameTo",
+    "content": "Type EString Multiplicity 0..1 Optional name to use for this element in the projected context instead of its source name.",
+    "timestamp": 1773170609263
+  },
+  "references/eClassifiers/SourceModel/index.html": {
+    "link-uuid": "fdb0f0b6-eca2-47d6-adec-0a4cd89139d9",
+    "title": "SourceModel",
+    "content": "Represents a single source metamodel/model pair (e.g., Jira, GitLab) included in the projection. Diagram ",
+    "timestamp": 1773170609356
+  },
+  "references/eClassifiers/SourceModel/references/eStructuralFeatures/name/index.html": {
+    "path": "SourceModel/Attributes/name",
+    "link-uuid": "139e4344-c7ab-40e9-9846-d2bdeb6ac36e",
+    "title": "name",
+    "content": "Type EString Multiplicity 0..1 Logical name identifying this source model (e.g., &lsquo;Jira&rsquo;, &lsquo;GitLab&rsquo;).",
+    "timestamp": 1773170609365
+  },
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/typeMappings/index.html": {
+    "path": "ContextModel/References/typeMappings",
+    "link-uuid": "a8857534-1a36-4121-ac63-28bc2cdcf9d1",
+    "title": "typeMappings",
+    "content": "Type TypeMapping Multiplicity 0..* Type-level projection rules supporting flattening, expansion, and type substitution across source models.",
+    "timestamp": 1773170609136
+  },
+  "references/eClassifiers/TypeMapping/references/eStructuralFeatures/sourceModel/index.html": {
+    "path": "TypeMapping/References/sourceModel",
+    "link-uuid": "db7c57a1-461a-4b5c-add6-5abc72627248",
+    "title": "sourceModel",
+    "content": "Type SourceModel Multiplicity 1 The source model that contains the source type being mapped.",
+    "timestamp": 1773170609399
+  },
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/sourceModels/index.html": {
+    "path": "ContextModel/References/sourceModels",
+    "link-uuid": "a86d3c7f-7db1-4b6f-9dec-7039f6e34ab1",
+    "title": "sourceModels",
+    "content": "Type SourceModel Multiplicity 1..* One or more source metamodel/model pairs (e.g., Jira, GitLab) that are projected into this context.",
+    "timestamp": 1773170609134
+  },
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/crossModelLinks/index.html": {
+    "path": "ContextModel/References/crossModelLinks",
+    "link-uuid": "ffb63ea8-4eb7-47b5-8faa-16c2bfcf8f69",
+    "title": "crossModelLinks",
+    "content": "Type CrossModelLink Multiplicity 0..* Semantic relationships between elements from different source models (e.g., JiraIssue to GitLabCommit).",
+    "timestamp": 1773170609120
+  },
+  "references/eClassifiers/SourceModel/references/eStructuralFeatures/documentation/index.html": {
+    "path": "SourceModel/Attributes/documentation",
+    "link-uuid": "de4cf604-d9f6-4add-b604-0f496508a595",
+    "title": "documentation",
+    "content": "Type EString Multiplicity 0..1 Optional human-readable documentation for this source model.",
+    "timestamp": 1773170609360
+  },
+  "references/eClassifiers/TypeMapping/index.html": {
+    "link-uuid": "5dfc2d16-db9d-4255-be69-e736dc9a61c3",
+    "title": "TypeMapping",
+    "content": "Supports flattening, expansion, and type substitution of a source EClassifier within or across source models. Diagram ",
+    "timestamp": 1773170609386
+  },
+  "references/eClassifiers/DriftRule/references/eStructuralFeatures/severity/index.html": {
+    "path": "DriftRule/Attributes/severity",
+    "link-uuid": "e2173fae-21dc-40e4-844b-c1c1b07a0182",
+    "title": "severity",
+    "content": "Type EString Multiplicity 0..1 Overall severity of drift detection for this element. One of: &lsquo;warning&rsquo;, &lsquo;error&rsquo;, &lsquo;ignore&rsquo;.",
+    "timestamp": 1773170609222
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/documentation/index.html": {
+    "path": "CrossModelLink/Attributes/documentation",
+    "link-uuid": "1403bd0c-733a-40c6-b3c5-95925c161ef8",
+    "title": "documentation",
+    "content": "Type EString Multiplicity 0..1 Optional human-readable documentation describing the semantics of this cross-model link.",
+    "timestamp": 1773170609168
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/sourceModelFrom/index.html": {
+    "path": "CrossModelLink/References/sourceModelFrom",
+    "link-uuid": "a9f397ea-d07b-4bc7-839b-115995c29be6",
+    "title": "sourceModelFrom",
+    "content": "Type SourceModel Multiplicity 1 The source model that owns the &lsquo;from&rsquo; element.",
+    "timestamp": 1773170609179
+  },
+  "references/eClassifiers/DriftRule/references/eStructuralFeatures/onMissingElement/index.html": {
+    "path": "DriftRule/Attributes/onMissingElement",
+    "link-uuid": "39e56618-5c58-4a0c-892f-7684ba5f6d94",
+    "title": "onMissingElement",
+    "content": "Type EString Multiplicity 0..1 Action to take when the source element is missing in a newer version of the source model. One of: &lsquo;fail&rsquo;, &lsquo;skip&rsquo;, &lsquo;suggest&rsquo;.",
+    "timestamp": 1773170609219
+  },
+  "references/eClassifiers/TypeMapping/references/eStructuralFeatures/flatten/index.html": {
+    "path": "TypeMapping/Attributes/flatten",
+    "link-uuid": "f193ddda-fe14-4375-a2fd-7827a5278bc7",
+    "title": "flatten",
+    "content": "Type EBoolean Multiplicity 0..1 Whether to flatten this type&rsquo;s structure into its containing type during projection. Defaults to false.",
+    "timestamp": 1773170609390
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/operationContexts/index.html": {
+    "path": "ElementContext/References/operationContexts",
+    "link-uuid": "ff8976dc-8115-4409-9a54-172e1eb5f564",
+    "title": "operationContexts",
+    "content": "Type OperationContext Multiplicity 0..* Per-operation projection rules controlling visibility and renaming of EOperations.",
+    "timestamp": 1773170609261
+  },
+  "references/eClassifiers/SourceModel/references/eStructuralFeatures/rootElements/index.html": {
+    "path": "SourceModel/References/rootElements",
+    "link-uuid": "ca715a8f-87b7-4dd4-ba0c-cbb12ff0b320",
+    "title": "rootElements",
+    "content": "Type EObject Multiplicity 0..* Optional root EObjects from the source model used for model-level projection.",
+    "timestamp": 1773170609367
+  },
+  "references/eClassifiers/FeatureContext/references/eStructuralFeatures/readOnly/index.html": {
+    "path": "FeatureContext/Attributes/readOnly",
+    "link-uuid": "208b7881-244c-4d0c-a7ab-39cc2447abbc",
+    "title": "readOnly",
+    "content": "Type EBoolean Multiplicity 0..1 Whether this feature is exposed as read-only in the projected context. Defaults to false.",
+    "timestamp": 1773170609300
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/featureContext/index.html": {
+    "path": "CrossModelLink/References/featureContext",
+    "link-uuid": "bedf2271-91e5-4e3d-bd18-fa29caf1b807",
+    "title": "featureContext",
+    "content": "Type FeatureContext Multiplicity 0..1 Optional feature context used when this cross-model link is reified as a feature in the projected context.",
+    "timestamp": 1773170609171
+  },
+  "references/eClassifiers/FeatureContext/references/eStructuralFeatures/include/index.html": {
+    "path": "FeatureContext/Attributes/include",
+    "link-uuid": "49128cc4-2cb0-48d7-b032-fdda5b67eb4f",
+    "title": "include",
+    "content": "Type EBoolean Multiplicity 0..1 Whether to include this feature in the projected context. Defaults to true.",
+    "timestamp": 1773170609297
+  },
+  "references/eClassifiers/OperationContext/index.html": {
+    "link-uuid": "9adc3a9a-19cb-4194-98cf-f152f286c342",
+    "title": "OperationContext",
+    "content": "Controls visibility and renaming of a single EOperation in the projected context. Diagram ",
+    "timestamp": 1773170609324
+  },
+  "references/eClassifiers/TypeMapping/references/eStructuralFeatures/target/index.html": {
+    "path": "TypeMapping/References/target",
+    "link-uuid": "8cbf3252-9fd9-4535-8367-1ff406629119",
+    "title": "target",
+    "content": "Type EClassifier Multiplicity 0..1 Optional target EClassifier to substitute for the source type in the projected context.",
+    "timestamp": 1773170609402
+  },
+  "references/eClassifiers/DriftRule/references/eStructuralFeatures/target/index.html": {
+    "path": "DriftRule/References/target",
+    "link-uuid": "68e14eee-e8f7-4f49-8faf-37366bfe0119",
+    "title": "target",
+    "content": "Type ENamedElement Multiplicity 1 The SCM element (ENamedElement) to which this drift rule applies.",
+    "timestamp": 1773170609224
+  },
+  "references/eClassifiers/FeatureContext/references/eStructuralFeatures/source/index.html": {
+    "path": "FeatureContext/References/source",
+    "link-uuid": "86db430f-68b6-4573-9001-9d508255c5ad",
+    "title": "source",
+    "content": "Type EStructuralFeature Multiplicity 1 The source EStructuralFeature (EAttribute or EReference) from the source metamodel.",
+    "timestamp": 1773170609305
+  },
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/name/index.html": {
+    "path": "ContextModel/Attributes/name",
+    "link-uuid": "a2d42716-e23f-487f-aab5-c79e8ee2279d",
+    "title": "name",
+    "content": "Type EString Multiplicity 0..1 Name of this Semantic Context Model.",
+    "timestamp": 1773170609131
+  },
+  "references/eClassifiers/SourceModel/references/eStructuralFeatures/metamodel/index.html": {
+    "path": "SourceModel/References/metamodel",
+    "link-uuid": "5d59897b-424b-42e7-aec4-297ba3799d9f",
+    "title": "metamodel",
+    "content": "Type EPackage Multiplicity 1 The EPackage that defines the source metamodel for this source model entry.",
+    "timestamp": 1773170609362
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/sourceModel/index.html": {
+    "path": "ElementContext/References/sourceModel",
+    "link-uuid": "12fdda2b-e9d0-40ed-a3dc-39b7976f80d4",
+    "title": "sourceModel",
+    "content": "Type SourceModel Multiplicity 1 The source model from which the element originates.",
+    "timestamp": 1773170609268
+  },
+  "references/eClassifiers/TypeMapping/references/eStructuralFeatures/renameTo/index.html": {
+    "path": "TypeMapping/Attributes/renameTo",
+    "link-uuid": "87d24bc1-2a05-494b-9fe4-5faead1ba1f3",
+    "title": "renameTo",
+    "content": "Type EString Multiplicity 0..1 Optional name to use for the mapped type in the projected context.",
+    "timestamp": 1773170609393
+  },
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/driftRules/index.html": {
+    "path": "ContextModel/References/driftRules",
+    "link-uuid": "dcfce4dc-40fc-4fc3-a314-062a739d8129",
+    "title": "driftRules",
+    "content": "Type DriftRule Multiplicity 0..* Rules describing how to detect and handle upstream model changes (drift).",
+    "timestamp": 1773170609125
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/source/index.html": {
+    "path": "ElementContext/References/source",
+    "link-uuid": "a2073e99-38ec-4c1d-9f0e-f7c5f1947892",
+    "title": "source",
+    "content": "Type ENamedElement Multiplicity 1 The source EClass or EDataType from the source metamodel that this context applies to.",
+    "timestamp": 1773170609265
+  },
+  "references/eClassifiers/FeatureContext/references/eStructuralFeatures/followReference/index.html": {
+    "path": "FeatureContext/Attributes/followReference",
+    "link-uuid": "b121c979-1661-4e7c-ae6a-c73034a7258e",
+    "title": "followReference",
+    "content": "Type EBoolean Multiplicity 0..1 Whether to follow this reference during projection (traverse its target). Defaults to true.",
+    "timestamp": 1773170609294
+  },
+  "references/eClassifiers/CrossModelLink/references/eStructuralFeatures/name/index.html": {
+    "path": "CrossModelLink/Attributes/name",
+    "link-uuid": "a487c3ad-c40b-49eb-930b-32e29d9010dc",
+    "title": "name",
+    "content": "Type EString Multiplicity 0..1 Name identifying this cross-model link (e.g., &lsquo;issueToCommit&rsquo;).",
+    "timestamp": 1773170609176
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/include/index.html": {
+    "path": "ElementContext/Attributes/include",
+    "link-uuid": "8a83a61a-c0a1-4579-9ba2-9d17934b53d8",
+    "title": "include",
+    "content": "Type EBoolean Multiplicity 0..1 Whether to include this element in the projected context. Defaults to true.",
+    "timestamp": 1773170609258
+  },
+  "references/eClassifiers/TypeMapping/references/eStructuralFeatures/source/index.html": {
+    "path": "TypeMapping/References/source",
+    "link-uuid": "113d17e7-cfa2-43c5-9956-d3dc2f6a9506",
+    "title": "source",
+    "content": "Type EClassifier Multiplicity 1 The source EClassifier (EClass or EDataType) being mapped or substituted.",
+    "timestamp": 1773170609396
+  },
+  "references/eClassifiers/FeatureContext/references/eStructuralFeatures/renameTo/index.html": {
+    "path": "FeatureContext/Attributes/renameTo",
+    "link-uuid": "00608f27-a98b-424f-95f4-ccda636e7489",
+    "title": "renameTo",
+    "content": "Type EString Multiplicity 0..1 Optional name to use for this feature in the projected context instead of its source name.",
+    "timestamp": 1773170609302
+  },
+  "references/eClassifiers/OperationContext/references/eStructuralFeatures/renameTo/index.html": {
+    "path": "OperationContext/Attributes/renameTo",
+    "link-uuid": "80a2fdf3-10ea-4b63-b634-f556bf0519e9",
+    "title": "renameTo",
+    "content": "Type EString Multiplicity 0..1 Optional name to use for this operation in the projected context instead of its source name.",
+    "timestamp": 1773170609331
+  },
+  "references/eClassifiers/ElementContext/index.html": {
+    "link-uuid": "068c1531-03bf-4f79-b4b7-24ea236df1b5",
+    "title": "ElementContext",
+    "content": "Describes how a specific EClass or EDataType from a particular SourceModel is treated in the projected context. Diagram ",
+    "timestamp": 1773170609245
+  },
+  "references/eClassifiers/OperationContext/references/eStructuralFeatures/source/index.html": {
+    "path": "OperationContext/References/source",
+    "link-uuid": "a9fa1ad4-c740-47e1-82df-de106828a2bf",
+    "title": "source",
+    "content": "Type EOperation Multiplicity 1 The source EOperation from the source metamodel.",
+    "timestamp": 1773170609332
+  },
+  "references/eClassifiers/ElementContext/references/eStructuralFeatures/documentation/index.html": {
+    "path": "ElementContext/Attributes/documentation",
+    "link-uuid": "65a11241-ed0b-4b85-989d-62d00a38a297",
+    "title": "documentation",
+    "content": "Type EString Multiplicity 0..1 Optional documentation for this element context, overriding or supplementing source element documentation.",
+    "timestamp": 1773170609251
+  },
+  "references/eClassifiers/DriftRule/index.html": {
+    "link-uuid": "d92d385e-022c-4606-91e6-e883af3004a9",
+    "title": "DriftRule",
+    "content": "Defines how to detect and handle changes in upstream source models (semantic drift) for a specific SCM element. Diagram ",
+    "timestamp": 1773170609208
+  },
+  "references/eClassifiers/ContextModel/references/eStructuralFeatures/elementContexts/index.html": {
+    "path": "ContextModel/References/elementContexts",
+    "link-uuid": "c0781f6a-92f7-437b-a90c-6119bf2868c0",
+    "title": "elementContexts",
+    "content": "Type ElementContext Multiplicity 0..* Per-element projection rules describing how EClass or EDataType instances from source models are treated in this context.",
+    "timestamp": 1773170609128
+  }
+}

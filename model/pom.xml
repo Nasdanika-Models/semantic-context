@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.nasdanika.models.semantic.context</groupId>
-		<version>2025.12.0</version>
+		<groupId>org.nasdanika.models.semantic-context</groupId>
+		<version>2026.2.0</version>
 		<artifactId>parent</artifactId>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>model</artifactId>
 	<packaging>jar</packaging>
-	<name>Semantic Context Ecore Model</name>
+	<name>Ecore Semantic Context Model</name>
 	<build>
 		<plugins>
 			<plugin>
@@ -32,7 +32,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>		
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -56,17 +56,16 @@
 		</plugins>
 	</build>
 
-	<dependencies>
+	<dependencies>	
 		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.ecore</artifactId>
-			<version>2.41.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-			<version>2.37.0</version>
-			<scope>test</scope>
-		</dependency>
+		    <groupId>org.eclipse.emf</groupId>
+		    <artifactId>org.eclipse.emf.ecore</artifactId>
+		    <version>2.41.0</version>
+		</dependency> 		
+        <dependency>
+            <groupId>org.nasdanika.core</groupId>
+            <artifactId>capability</artifactId>
+            <version>${core.version}</version>
+        </dependency>       
 	</dependencies>
 </project>

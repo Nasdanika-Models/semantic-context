@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="semanticContext"
-    nsURI="ecore://nasdanika.org/models/semantic-context"
-    nsPrefix="org.nasdanika.models.semantic.context">
-
-  <!-- 1. ContextModel: root element that owns all SCM elements -->
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="semanticcontext" nsURI="ecore://nasdanika.org/models/semanticcontext"
+    nsPrefix="org.nasdanika.models.semanticcontext">
   <eClassifiers xsi:type="ecore:EClass" name="ContextModel">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Root element of the Semantic Context Model. Owns all source model references, element contexts, type mappings, cross-model links, and drift rules."/>
@@ -19,8 +16,8 @@
         <details key="documentation" value="Optional human-readable documentation for this context model."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" lowerBound="1" upperBound="-1"
-        eType="#//SourceModel" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" lowerBound="1"
+        upperBound="-1" eType="#//SourceModel" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="One or more source metamodel/model pairs (e.g., Jira, GitLab) that are projected into this context."/>
       </eAnnotations>
@@ -50,8 +47,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 2. SourceModel: represents a single source metamodel/model pair -->
   <eClassifiers xsi:type="ecore:EClass" name="SourceModel">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Represents a single source metamodel/model pair (e.g., Jira, GitLab) included in the projection."/>
@@ -79,8 +74,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 3. ElementContext: describes how a specific EClass or EDataType is treated -->
   <eClassifiers xsi:type="ecore:EClass" name="ElementContext">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Describes how a specific EClass or EDataType from a particular SourceModel is treated in the projected context."/>
@@ -132,8 +125,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 4. FeatureContext: controls visibility and mapping of structural features -->
   <eClassifiers xsi:type="ecore:EClass" name="FeatureContext">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Controls visibility, renaming, and mapping of a single EStructuralFeature in the projected context."/>
@@ -168,8 +159,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 5. OperationContext: controls visibility of operations -->
   <eClassifiers xsi:type="ecore:EClass" name="OperationContext">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Controls visibility and renaming of a single EOperation in the projected context."/>
@@ -192,8 +181,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 6. TypeMapping: supports flattening, expansion, and type substitution -->
   <eClassifiers xsi:type="ecore:EClass" name="TypeMapping">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Supports flattening, expansion, and type substitution of a source EClassifier within or across source models."/>
@@ -221,15 +208,12 @@
         <details key="documentation" value="The source EClassifier (EClass or EDataType) being mapped or substituted."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClassifier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClassifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Optional target EClassifier to substitute for the source type in the projected context."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 7. CrossModelLink: defines semantic relationships between elements from different source models -->
   <eClassifiers xsi:type="ecore:EClass" name="CrossModelLink">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Defines a semantic relationship between named elements from two different source models (e.g., JiraIssue to GitLabCommit)."/>
@@ -244,14 +228,12 @@
         <details key="documentation" value="Optional human-readable documentation describing the semantics of this cross-model link."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The source-side named element of this cross-model link (e.g., a JiraIssue EClass)."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The target-side named element of this cross-model link (e.g., a GitLabCommit EClass)."/>
       </eAnnotations>
@@ -268,15 +250,13 @@
         <details key="documentation" value="The source model that owns the 'to' element."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="featureContext"
-        eType="#//FeatureContext" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureContext" eType="#//FeatureContext"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Optional feature context used when this cross-model link is reified as a feature in the projected context."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
-  <!-- 8. DriftRule: defines how to detect and handle upstream model changes -->
   <eClassifiers xsi:type="ecore:EClass" name="DriftRule">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Defines how to detect and handle changes in upstream source models (semantic drift) for a specific SCM element."/>
@@ -308,5 +288,4 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-
 </ecore:EPackage>
